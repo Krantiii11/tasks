@@ -1,13 +1,18 @@
-const button = document.getElementById("colorButton");
+// Function to display the current date and time
+function displayTime() {
+    const now = new Date();
+    const dateString = now.toLocaleDateString(); // Gets the current date
+    const timeString = now.toLocaleTimeString(); // Gets the current time
 
-button.addEventListener("click", function() {
-    const colors = ["#f4f4f4", "#ff7f7f", "#7f7fff", "#7fff7f", "#fffb7f"];
-    const currentColor = document.body.style.backgroundColor;
-    let newColor;
+    // Displaying the current date and time on the webpage
+    document.getElementById("time-display").textContent = `${dateString} ${timeString}`;
+}
 
-    do {
-        newColor = colors[Math.floor(Math.random() * colors.length)];
-    } while (newColor === currentColor);
+// Set an interval to refresh the time every second
+setInterval(displayTime, 1000);
 
-    document.body.style.backgroundColor = newColor;
-});
+// Button functionality to manually refresh the time
+document.getElementById("refresh-button").addEventListener("click", displayTime);
+
+// Initial display of time when the page loads
+displayTime();
